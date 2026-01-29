@@ -104,7 +104,7 @@ const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 async function caricaPresidenti() {
   const { data } = await supabaseClient
-    .from("presidenti")
+    .from("organi-sociali")
     .select("*")
     .order("id", { ascending: true });
 
