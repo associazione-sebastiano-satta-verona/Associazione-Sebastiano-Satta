@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contatti</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  text-align: center;
+  padding: 30px 20px;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.contenuto {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.voce {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.voce span {
+  font-weight: bold;
+}
+
+#mappa {
+  width: 100%;
+  height: 350px;
+  border: none;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+<div class="header">Contatti</div>
+
+<div class="contenuto">
+  <p class="voce"><span>Indirizzo:</span> <span id="indirizzo"></span></p>
+  <p class="voce"><span>Telefono:</span> <span id="telefono"></span></p>
+  <p class="voce"><span>Email:</span> <span id="email"></span></p>
+  <p class="voce"><span>Orari:</span> <span id="orari"></span></p>
+  <iframe id="mappa"></iframe>
+</div>
+
+<script>
+const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZHFrYmRxeXJkcXN4b2lwcGd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODg4NDYsImV4cCI6MjA4NTI2NDg0Nn0.uQxL5bWSFTymZYs-r3ZCWNc7wDPsA-bt0G9lSpfhFpI";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function caricaContatti() {
+  const { data } = await supabaseClient
+    .from("contatti")
+    .select("*")
+    .limit(1)
+    .single();
+
+  document.getElementById("indirizzo").textContent = data.indirizzo;
+  document.getElementById("telefono").textContent = data.telefono;
+  document.getElementById("email").textContent = data.email;
+  document.getElementById("orari").textContent = data.orari;
+  document.getElementById("mappa").src = data.mappa;
+}
+
+caricaContatti();
+</script>
+
+</body>
+</html>
