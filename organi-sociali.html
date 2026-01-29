@@ -107,6 +107,14 @@ async function caricaPresidenti() {
     .from("organi-sociali")
     .select("*")
     .order("id", { ascending: true });
+  if (!data || data.length === 0) {
+  document.getElementById("presidenti-container").innerHTML = `
+    <div style="text-align:center; padding:40px; font-size:20px; color:#666;">
+      Nessun organo sociale registrato.
+    </div>
+  `;
+  return;
+}
 
   const container = document.getElementById("presidenti-container");
 
