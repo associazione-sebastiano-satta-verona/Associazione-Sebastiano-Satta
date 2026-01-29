@@ -88,7 +88,7 @@ const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 async function caricaContatti() {
   const { data } = await supabaseClient
-  .from("NOME_TABELLA")
+  .from("contatti")
   .select("*")
   .eq("id", id)
   .single();
