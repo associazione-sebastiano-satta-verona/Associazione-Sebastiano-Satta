@@ -3,20 +3,33 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Nostra Storia</title>
+<title>Storia</title>
 
 <style>
 body {
-  font-family: Georgia, serif;
-  background: #faf7f2;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
   margin: 0;
   padding: 0;
 }
 
 .header {
-  text-align: center;
-  padding: 40px 20px;
-  font-size: 36px;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #d40000, #0044ff);
+  color: white;
+}
+
+.header img {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.header-title {
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -24,22 +37,24 @@ body {
   max-width: 900px;
   margin: auto;
   padding: 20px;
-  line-height: 1.7;
-  font-size: 18px;
-  color: #333;
 }
 
-#immagine {
+.contenuto h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.contenuto img {
   width: 100%;
   border-radius: 12px;
-  margin: 30px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  margin: 20px 0;
 }
 
-.titolo {
-  font-size: 28px;
-  margin-bottom: 20px;
-  text-align: center;
+.testo {
+  font-size: 19px;
+  line-height: 1.6;
+  color: #444;
+  margin-top: 20px;
 }
 </style>
 
@@ -47,12 +62,15 @@ body {
 </head>
 <body>
 
-<div class="header">La Nostra Storia</div>
+<div class="header">
+  <img src="logo.png">
+  <div class="header-title">Associazione Sebastiano Satta</div>
+</div>
 
 <div class="contenuto">
-  <h2 id="titolo" class="titolo"></h2>
+  <h1 id="titolo"></h1>
   <img id="immagine">
-  <p id="contenuto"></p>
+  <div id="testo" class="testo"></div>
 </div>
 
 <script>
@@ -64,12 +82,11 @@ async function caricaStoria() {
   const { data } = await supabaseClient
     .from("storia")
     .select("*")
-    .limit(1)
     .single();
 
   document.getElementById("titolo").textContent = data.titolo;
-  document.getElementById("contenuto").textContent = data.contenuto;
-  document.getElementById("immagine").src = data.immagine;
+  document.getElementById("immagine").src = data.immagine || "placeholder.jpg";
+  document.getElementById("testo").innerHTML = data.testo;
 }
 
 caricaStoria();
