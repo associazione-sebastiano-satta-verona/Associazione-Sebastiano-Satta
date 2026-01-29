@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La Nostra Storia</title>
+
+<style>
+body {
+  font-family: Georgia, serif;
+  background: #faf7f2;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.contenuto {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+  line-height: 1.7;
+  font-size: 18px;
+  color: #333;
+}
+
+#immagine {
+  width: 100%;
+  border-radius: 12px;
+  margin: 30px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.titolo {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+<div class="header">La Nostra Storia</div>
+
+<div class="contenuto">
+  <h2 id="titolo" class="titolo"></h2>
+  <img id="immagine">
+  <p id="contenuto"></p>
+</div>
+
+<script>
+const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZHFrYmRxeXJkcXN4b2lwcGd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODg4NDYsImV4cCI6MjA4NTI2NDg0Nn0.uQxL5bWSFTymZYs-r3ZCWNc7wDPsA-bt0G9lSpfhFpI";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function caricaStoria() {
+  const { data } = await supabaseClient
+    .from("storia")
+    .select("*")
+    .limit(1)
+    .single();
+
+  document.getElementById("titolo").textContent = data.titolo;
+  document.getElementById("contenuto").textContent = data.contenuto;
+  document.getElementById("immagine").src = data.immagine;
+}
+
+caricaStoria();
+</script>
+
+</body>
+</html>
