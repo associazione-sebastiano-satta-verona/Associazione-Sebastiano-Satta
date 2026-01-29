@@ -89,7 +89,7 @@ const id = params.get("id");
 
 async function caricaPresidente() {
   const { data } = await supabaseClient
-    .from("presidenti")
+    .from("organi-sociali")
     .select("*")
     .eq("id", id)
     .single();
