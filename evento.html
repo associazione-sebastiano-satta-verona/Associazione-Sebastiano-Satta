@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evento</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #eef2f7;
+  margin: 0;
+  padding: 0;
+}
+
+.contenuto {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+#immagine {
+  width: 100%;
+  border-radius: 12px;
+  margin: 20px 0;
+}
+
+#data, #luogo {
+  color: #777;
+  margin-bottom: 10px;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+<div class="contenuto">
+  <h1 id="titolo"></h1>
+  <p id="data"></p>
+  <p id="luogo"></p>
+  <img id="immagine">
+  <p id="descrizione"></p>
+</div>
+
+<script>
+const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZHFrYmRxeXJkcXN4b2lwcGd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODg4NDYsImV4cCI6MjA4NTI2NDg0Nn0.uQxL5bWSFTymZYs-r3ZCWNc7wDPsA-bt0G9lSpfhFpI";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+async function caricaEvento() {
+  const { data } = await supabaseClient
+    .from("eventi")
+    .select("*")
+    .eq("id", id)
+    .single();
+
+  document.getElementById("titolo").textContent = data.titolo;
+  document.getElementById("descrizione").textContent = data.descrizione;
+  document.getElementById("data").textContent = "Data: " + data.data;
+  document.getElementById("luogo").textContent = "Luogo: " + data.luogo;
+  document.getElementById("immagine").src = data.immagine;
+}
+
+caricaEvento();
+</script>
+
+</body>
+</html>
