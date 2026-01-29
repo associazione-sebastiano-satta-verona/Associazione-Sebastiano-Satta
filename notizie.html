@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notizie</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  font-size: 32px;
+}
+
+.notizie-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  padding: 20px;
+}
+
+.notizia-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform .2s;
+}
+
+.notizia-card:hover {
+  transform: translateY(-5px);
+}
+
+.notizia-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.notizia-card h2 {
+  margin: 15px;
+  font-size: 20px;
+}
+
+.notizia-card p {
+  margin: 0 15px 15px;
+  color: #555;
+}
+
+.notizia-card a {
+  display: block;
+  padding: 15px;
+  text-align: right;
+  color: #0077ff;
+  font-weight: bold;
+  text-decoration: none;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+<h1>Notizie</h1>
+
+<div id="notizie-container" class="notizie-grid"></div>
+
+<script>
+const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZHFrYmRxeXJkcXN4b2lwcGd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODg4NDYsImV4cCI6MjA4NTI2NDg0Nn0.uQxL5bWSFTymZYs-r3ZCWNc7wDPsA-bt0G9lSpfhFpI";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function caricaNotizie() {
+  const { data } = await supabaseClient
+    .from("notizie")
+    .select("*")
+    .order("data", { ascending: false });
+
+  const container = document.getElementById("notizie-container");
+
+  data.forEach(n => {
+    container.innerHTML += `
+      <div class="notizia-card">
+        <img src="${n.immagine || 'placeholder.jpg'}">
+        <h2>${n.titolo}</h2>
+        <p>${n.testo.substring(0, 120)}...</p>
+        <a href="notizia.html?id=${n.id}">Leggi di più →</a>
+      </div>
+    `;
+  });
+}
+
+caricaNotizie();
+</script>
+
+</body>
+</html>
