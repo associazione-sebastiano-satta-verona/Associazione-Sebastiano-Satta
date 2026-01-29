@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prodotti</title>
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  font-size: 32px;
+}
+
+.prodotti-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  padding: 20px;
+}
+
+.prodotto-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform .2s;
+}
+
+.prodotto-card:hover {
+  transform: translateY(-5px);
+}
+
+.prodotto-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.prodotto-card h2 {
+  margin: 15px;
+  font-size: 20px;
+}
+
+.prodotto-card p {
+  margin: 0 15px 10px;
+  color: #555;
+}
+
+.prezzo {
+  margin: 0 15px 15px;
+  font-weight: bold;
+  color: #1a7f37;
+}
+
+.prodotto-card a {
+  display: block;
+  padding: 15px;
+  text-align: right;
+  color: #0077ff;
+  font-weight: bold;
+  text-decoration: none;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+</head>
+<body>
+
+<h1>Prodotti</h1>
+
+<div id="prodotti-container" class="prodotti-grid"></div>
+
+<script>
+const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZHFrYmRxeXJkcXN4b2lwcGd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODg4NDYsImV4cCI6MjA4NTI2NDg0Nn0.uQxL5bWSFTymZYs-r3ZCWNc7wDPsA-bt0G9lSpfhFpI";
+const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
+
+async function caricaProdotti() {
+  const { data } = await supabaseClient
+    .from("prodotti")
+    .select("*")
+    .order("id", { ascending: true });
+
+  const container = document.getElementById("prodotti-container");
+
+  data.forEach(p => {
+    container.innerHTML += `
+      <div class="prodotto-card">
+        <img src="${p.immagine || 'placeholder.jpg'}">
+        <h2>${p.nome}</h2>
+        <p>${p.descrizione.substring(0, 80)}...</p>
+        <p class="prezzo">€ ${p.prezzo}</p>
+        <a href="prodotto.html?id=${p.id}">Dettagli →</a>
+      </div>
+    `;
+  });
+}
+
+caricaProdotti();
+</script>
+
+</body>
+</html>
