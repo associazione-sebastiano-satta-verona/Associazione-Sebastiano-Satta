@@ -94,9 +94,9 @@ async function caricaPresidente() {
     .eq("id", id)
     .single();
   if (!data) {
-  document.body.innerHTML = `
+  document.querySelector(".contenuto").innerHTML = `
     <div style="text-align:center; padding:40px; font-size:22px; color:#666;">
-      Organo Sociale non trovato.
+      Organo sociale non trovato.
     </div>
   `;
   return;
