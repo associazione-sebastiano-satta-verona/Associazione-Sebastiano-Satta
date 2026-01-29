@@ -107,6 +107,14 @@ async function caricaProdotti() {
     .from("prodotti")
     .select("*")
     .order("id", { ascending: true });
+  if (!data || data.length === 0) {
+  document.getElementById("prodotti-container").innerHTML = `
+    <div style="text-align:center; padding:40px; font-size:20px; color:#666;">
+      Nessun prodotto disponibile.
+    </div>
+  `;
+  return;
+}
 
   const container = document.getElementById("prodotti-container");
 
