@@ -67,7 +67,7 @@ body {
   <div class="header-title">Associazione Sebastiano Satta</div>
 </div>
 
-<div class="contenuto">
+<div class="contenuto" id="contenuto">
   <h1 id="titolo"></h1>
   <img id="immagine">
   <div id="testo" class="testo"></div>
@@ -83,14 +83,15 @@ async function caricaStoria() {
     .from("storia")
     .select("*")
     .single();
+
   if (!data) {
-  document.body.innerHTML = `
-    <div style="text-align:center; padding:40px; font-size:22px; color:#666;">
-      Nessuna storia disponibile.
-    </div>
-  `;
-  return;
-}
+    document.getElementById("contenuto").innerHTML = `
+      <div style="text-align:center; padding:40px; font-size:22px; color:#666;">
+        Nessuna storia disponibile.
+      </div>
+    `;
+    return;
+  }
 
   document.getElementById("titolo").textContent = data.titolo;
   document.getElementById("immagine").src = data.immagine || "placeholder.jpg";
