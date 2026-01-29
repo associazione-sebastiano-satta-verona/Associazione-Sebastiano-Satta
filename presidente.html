@@ -8,27 +8,58 @@
 <style>
 body {
   font-family: Arial, sans-serif;
-  background: #f0f3f7;
+  background: #ffffff;
   margin: 0;
   padding: 0;
 }
 
+.header {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #d40000, #0044ff);
+  color: white;
+}
+
+.header img {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
 .contenuto {
-  max-width: 800px;
+  max-width: 900px;
   margin: auto;
   padding: 20px;
 }
 
-#immagine {
+.contenuto h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+.contenuto p {
+  font-size: 18px;
+  color: #555;
+}
+
+.contenuto img {
   width: 100%;
   border-radius: 12px;
   margin: 20px 0;
 }
 
-#periodo {
-  color: #777;
-  margin-bottom: 10px;
-  font-size: 18px;
+.testo {
+  font-size: 19px;
+  line-height: 1.6;
+  margin-top: 20px;
+  color: #444;
 }
 </style>
 
@@ -36,11 +67,16 @@ body {
 </head>
 <body>
 
+<div class="header">
+  <img src="logo.png">
+  <div class="header-title">Associazione Sebastiano Satta</div>
+</div>
+
 <div class="contenuto">
   <h1 id="nome"></h1>
   <p id="periodo"></p>
   <img id="immagine">
-  <p id="biografia"></p>
+  <div id="biografia" class="testo"></div>
 </div>
 
 <script>
@@ -60,8 +96,8 @@ async function caricaPresidente() {
 
   document.getElementById("nome").textContent = data.nome;
   document.getElementById("periodo").textContent = data.periodo;
-  document.getElementById("biografia").textContent = data.biografia;
-  document.getElementById("immagine").src = data.immagine;
+  document.getElementById("immagine").src = data.immagine || "placeholder.jpg";
+  document.getElementById("biografia").innerHTML = data.biografia;
 }
 
 caricaPresidente();
