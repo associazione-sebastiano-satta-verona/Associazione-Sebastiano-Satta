@@ -88,10 +88,19 @@ const supabaseClient = supabase.createClient(supabaseUrl, supabaseKey);
 
 async function caricaContatti() {
   const { data } = await supabaseClient
-    .from("contatti")
-    .select("*")
-    .single();
+  .from("NOME_TABELLA")
+  .select("*")
+  .eq("id", id)
+  .single();
 
+if (!data) {
+  document.body.innerHTML = `
+    <div style="text-align:center; padding:40px; font-size:22px; color:#666;">
+      Contenuto non trovato.
+    </div>
+  `;
+  return;
+}
   document.getElementById("email").textContent = data.email;
   document.getElementById("telefono").textContent = data.telefono;
   document.getElementById("indirizzo").textContent = data.indirizzo;
