@@ -8,9 +8,29 @@
 <style>
 body {
   font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  background: #ffffff;
   margin: 0;
   padding: 0;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #d40000, #0044ff);
+  color: white;
+}
+
+.header img {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.header-title {
+  font-size: 22px;
+  font-weight: bold;
 }
 
 h1 {
@@ -19,14 +39,14 @@ h1 {
   font-size: 32px;
 }
 
-.prodotti-grid {
+.grid {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   padding: 20px;
 }
 
-.prodotto-card {
+.card {
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -34,33 +54,27 @@ h1 {
   transition: transform .2s;
 }
 
-.prodotto-card:hover {
+.card:hover {
   transform: translateY(-5px);
 }
 
-.prodotto-card img {
+.card img {
   width: 100%;
-  height: 180px;
+  height: 220px;
   object-fit: cover;
 }
 
-.prodotto-card h2 {
+.card h2 {
   margin: 15px;
-  font-size: 20px;
+  font-size: 22px;
 }
 
-.prodotto-card p {
-  margin: 0 15px 10px;
+.card p {
+  margin: 0 15px 15px;
   color: #555;
 }
 
-.prezzo {
-  margin: 0 15px 15px;
-  font-weight: bold;
-  color: #1a7f37;
-}
-
-.prodotto-card a {
+.card a {
   display: block;
   padding: 15px;
   text-align: right;
@@ -74,9 +88,14 @@ h1 {
 </head>
 <body>
 
+<div class="header">
+  <img src="logo.png">
+  <div class="header-title">Associazione Sebastiano Satta</div>
+</div>
+
 <h1>Prodotti</h1>
 
-<div id="prodotti-container" class="prodotti-grid"></div>
+<div id="prodotti-container" class="grid"></div>
 
 <script>
 const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
@@ -93,11 +112,10 @@ async function caricaProdotti() {
 
   data.forEach(p => {
     container.innerHTML += `
-      <div class="prodotto-card">
+      <div class="card">
         <img src="${p.immagine || 'placeholder.jpg'}">
         <h2>${p.nome}</h2>
-        <p>${p.descrizione.substring(0, 80)}...</p>
-        <p class="prezzo">€ ${p.prezzo}</p>
+        <p>${p.prezzo} €</p>
         <a href="prodotto.html?id=${p.id}">Dettagli →</a>
       </div>
     `;
