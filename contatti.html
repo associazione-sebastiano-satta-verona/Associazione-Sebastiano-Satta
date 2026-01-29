@@ -91,7 +91,7 @@ async function caricaContatti() {
   .from("contatti")
   .select("*")
   .single();
-if (!data) {
+ if (!data) {
   document.querySelector(".contenuto").innerHTML = `
     <div style="text-align:center; padding:40px; font-size:22px; color:#666;">
       Nessun contatto disponibile.
