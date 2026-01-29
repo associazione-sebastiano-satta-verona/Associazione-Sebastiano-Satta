@@ -107,6 +107,14 @@ async function caricaNotizie() {
     .from("notizie")
     .select("*")
     .order("id", { ascending: false });
+  if (!data || data.length === 0) {
+  document.getElementById("notizie-container").innerHTML = `
+    <div style="text-align:center; padding:40px; font-size:20px; color:#666;">
+      Nessuna notizia disponibile.
+    </div>
+  `;
+  return;
+}
 
   const container = document.getElementById("notizie-container");
 
