@@ -99,6 +99,14 @@ async function caricaProdotto() {
     .select("*")
     .eq("id", id)
     .single();
+  if (!data) {
+  document.body.innerHTML = `
+    <div style="text-align:center; padding:40px; font-size:22px; color:#666;">
+      Prodotto non trovato.
+    </div>
+  `;
+  return;
+}
 
   document.getElementById("nome").textContent = data.nome;
   document.getElementById("prezzo").textContent = data.prezzo + " €";
