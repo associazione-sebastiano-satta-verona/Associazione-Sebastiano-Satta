@@ -8,15 +8,28 @@
 <style>
 body {
   font-family: Arial, sans-serif;
-  background: #f7f7f7;
+  background: #ffffff;
   margin: 0;
   padding: 0;
 }
 
 .header {
-  text-align: center;
-  padding: 30px 20px;
-  font-size: 32px;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background: linear-gradient(90deg, #d40000, #0044ff);
+  color: white;
+}
+
+.header img {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.header-title {
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -24,14 +37,16 @@ body {
   max-width: 900px;
   margin: auto;
   padding: 20px;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.contenuto h1 {
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
 .voce {
-  margin-bottom: 20px;
-  font-size: 18px;
+  font-size: 20px;
+  margin-bottom: 15px;
 }
 
 .voce span {
@@ -51,13 +66,18 @@ body {
 </head>
 <body>
 
-<div class="header">Contatti</div>
+<div class="header">
+  <img src="logo.png">
+  <div class="header-title">Associazione Sebastiano Satta</div>
+</div>
 
 <div class="contenuto">
-  <p class="voce"><span>Indirizzo:</span> <span id="indirizzo"></span></p>
-  <p class="voce"><span>Telefono:</span> <span id="telefono"></span></p>
-  <p class="voce"><span>Email:</span> <span id="email"></span></p>
-  <p class="voce"><span>Orari:</span> <span id="orari"></span></p>
+  <h1>Contatti</h1>
+
+  <div class="voce"><span>Email:</span> <span id="email"></span></div>
+  <div class="voce"><span>Telefono:</span> <span id="telefono"></span></div>
+  <div class="voce"><span>Indirizzo:</span> <span id="indirizzo"></span></div>
+
   <iframe id="mappa"></iframe>
 </div>
 
@@ -70,14 +90,12 @@ async function caricaContatti() {
   const { data } = await supabaseClient
     .from("contatti")
     .select("*")
-    .limit(1)
     .single();
 
-  document.getElementById("indirizzo").textContent = data.indirizzo;
-  document.getElementById("telefono").textContent = data.telefono;
   document.getElementById("email").textContent = data.email;
-  document.getElementById("orari").textContent = data.orari;
-  document.getElementById("mappa").src = data.mappa;
+  document.getElementById("telefono").textContent = data.telefono;
+  document.getElementById("indirizzo").textContent = data.indirizzo;
+  document.getElementById("mappa").src = data.mappa || "";
 }
 
 caricaContatti();
