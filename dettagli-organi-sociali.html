@@ -93,6 +93,15 @@ async function caricaPresidente() {
     .select("*")
     .eq("id", id)
     .single();
+  if (!data) {
+  document.body.innerHTML = `
+    <div style="text-align:center; padding:40px; font-size:22px; color:#666;">
+      Organo Sociale non trovato.
+    </div>
+  `;
+  return;
+}
+
 
   document.getElementById("nome").textContent = data.nome;
   document.getElementById("periodo").textContent = data.periodo;
