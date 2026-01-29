@@ -107,6 +107,14 @@ async function caricaEventi() {
     .from("eventi")
     .select("*")
     .order("id", { ascending: false });
+  if (!data || data.length === 0) {
+  document.getElementById("eventi-container").innerHTML = `
+    <div style="text-align:center; padding:40px; font-size:20px; color:#666;">
+      Nessun evento disponibile.
+    </div>
+  `;
+  return;
+}
 
   const container = document.getElementById("eventi-container");
 
