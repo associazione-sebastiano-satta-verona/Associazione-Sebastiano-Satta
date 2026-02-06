@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+Disallow: /evento.html
+Disallow: /notizia.html
+Disallow: /prodotto.html
+Disallow: /organo-sociale.html
+
+Sitemap: https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/sitemap.xml
