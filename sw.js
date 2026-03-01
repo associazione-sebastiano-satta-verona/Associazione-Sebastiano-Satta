@@ -1,7 +1,1 @@
-self.addEventListener("install", () => {
-  self.skipWaiting();
-});
-
-self.addEventListener("activate", () => {
-  return;
-});
+self.addEventListener("install",()=>{self.skipWaiting()});self.addEventListener("activate",()=>{return})
