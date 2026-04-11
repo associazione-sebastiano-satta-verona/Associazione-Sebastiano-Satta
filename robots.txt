@@ -4,6 +4,8 @@ Disallow: /evento.html
 Disallow: /notizia.html
 Disallow: /prodotto.html
 Disallow: /organo-sociale.html
+Disallow: /iscrizione.html
+Disallow: /check-iscrizione.html
 Crawl-delay: 1
 
 User-agent: Googlebot
