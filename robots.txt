@@ -5,5 +5,4 @@ Disallow: /iscrizione.html
 Disallow: /check-iscrizione.html
 Disallow: /voucher.html
 Disallow: /check-voucher.html
-
 Sitemap: https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/sitemap.xml
