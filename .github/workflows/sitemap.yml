@@ -24,7 +24,7 @@ jobs:
         with:
           node-version: 24
 
-      - name: Generate sitemap.xml
+      - name: Generate sitemap-index.xml
         run: |
           cat > generate-sitemap.mjs << 'EOF'
           import fs from "fs";
@@ -55,7 +55,12 @@ jobs:
             ];
 
             staticPages.forEach(page => {
-              urls.push(`  <url>\n    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/${page}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`);
+              urls.push(`  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/${page}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>`);
             });
 
             for (const t of tables) {
@@ -64,20 +69,28 @@ jobs:
                   headers: { apikey: anonKey }
                 });
 
-                if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+                if (!res.ok) throw new Error(`HTTP error: ${res.status}`);
                 const data = await res.json();
 
                 data.forEach(row => {
-                  urls.push(`  <url>\n    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/${t.url}${row.id}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>`);
+                  urls.push(`  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/${t.url}${row.id}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>`);
                 });
               } catch (error) {
-                console.error(`Errore nel recupero della tabella ${t.table}:`, error);
+                console.error(`Error fetching table ${t.table}:`, error);
               }
             }
 
-            const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join("\n")}\n</urlset>`;
+            const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls.join("\n")}
+</urlset>`;
 
-            fs.writeFileSync("sitemap.xml", xml.trim());
+            fs.writeFileSync("sitemap-index.xml", xml.trim());
           }
 
           main();
@@ -85,10 +98,10 @@ jobs:
 
           node generate-sitemap.mjs
 
-      - name: Commit sitemap.xml
+      - name: Commit sitemap-index.xml
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "actions@github.com"
-          git add sitemap.xml
-          git commit -m "Update sitemap.xml" || echo "No changes to commit"
+          git add sitemap-index.xml
+          git commit -m "Update sitemap-index.xml" || echo "No changes to commit"
           git push
