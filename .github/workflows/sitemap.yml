@@ -51,8 +51,7 @@ jobs:
               "storia.html",
               "organi-sociali.html",
               "tesseramento.html",
-              "contatti.html",
-              "privacy.html"
+              "contatti.html"
             ];
 
             staticPages.forEach(page => {
