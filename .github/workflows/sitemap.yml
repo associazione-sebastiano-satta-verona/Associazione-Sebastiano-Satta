@@ -21,14 +21,10 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install dependencies
-        run: npm install node-fetch@2
-
       - name: Generate sitemap.xml
         run: |
-          cat > generate-sitemap.js << 'EOF'
-          const fetch = require("node-fetch");
-          const fs = require("fs");
+          cat > generate-sitemap.mjs << 'EOF'
+          import fs from "fs";
 
           const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
           const anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZHFrYmRxeXJkcXN4b2lwcGd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODg4NDYsImV4cCI6MjA4NTI2NDg0Nn0.uQxL5bWSFTymZYs-r3ZCWNc7wDPsA-bt0G9lSpfhFpI";
@@ -96,7 +92,7 @@ jobs:
           main();
           EOF
 
-          node generate-sitemap.js
+          node generate-sitemap.mjs
 
       - name: Commit sitemap.xml
         run: |
