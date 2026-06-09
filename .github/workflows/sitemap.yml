@@ -1,0 +1,104 @@
+name: Generate Sitemap
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install node-fetch@2
+
+      - name: Generate sitemap.xml
+        run: |
+          cat > generate-sitemap.js << 'EOF'
+          const fetch = require("node-fetch");
+          const fs = require("fs");
+
+          const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
+          const anonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmZHFrYmRxeXJkcXN4b2lwcGd5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk2ODg4NDYsImV4cCI6MjA4NTI2NDg0Nn0.uQxL5bWSFTymZYs-r3ZCWNc7wDPsA-bt0G9lSpfhFpI";
+
+          const tables = [
+            { table: "notizie", url: "notizia.html?id=" },
+            { table: "eventi", url: "evento.html?id=" },
+            { table: "prodotti", url: "prodotto.html?id=" },
+            { table: "organi_sociali", url: "organo-sociale.html?id=" }
+          ];
+
+          async function main() {
+            let urls = [];
+
+            const staticPages = [
+              "",
+              "notizie.html",
+              "eventi.html",
+              "prodotti.html",
+              "storia.html",
+              "organi-sociali.html",
+              "tesseramento.html",
+              "contatti.html",
+              "privacy.html"
+            ];
+
+            staticPages.forEach(page => {
+              urls.push(`
+                <url>
+                  <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/${page}</loc>
+                  <lastmod>2026-06-01</lastmod>
+                  <changefreq>weekly</changefreq>
+                  <priority>0.8</priority>
+                </url>
+              `);
+            });
+
+            for (const t of tables) {
+              const res = await fetch(`${supabaseUrl}/rest/v1/${t.table}?select=id`, {
+                headers: { apikey: anonKey }
+              });
+
+              const data = await res.json();
+
+              data.forEach(row => {
+                urls.push(`
+                  <url>
+                    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/${t.url}${row.id}</loc>
+                    <lastmod>2026-06-01</lastmod>
+                    <changefreq>weekly</changefreq>
+                    <priority>0.7</priority>
+                  </url>
+                `);
+              });
+            }
+
+            const xml = `<?xml version="1.0" encoding="UTF-8"?>
+            <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+            ${urls.join("\n")}
+            </urlset>`;
+
+            fs.writeFileSync("sitemap.xml", xml.trim());
+          }
+
+          main();
+          EOF
+
+          node generate-sitemap.js
+
+      - name: Commit sitemap.xml
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "actions@github.com"
+          git add sitemap.xml
+          git commit -m "Update sitemap.xml" || echo "No changes to commit"
+          git push
