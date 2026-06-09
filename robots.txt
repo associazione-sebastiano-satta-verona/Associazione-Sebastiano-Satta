@@ -1,24 +1,17 @@
 User-agent: *
 Allow: /
 Disallow: /privacy.html
-Disallow: /evento.html
-Disallow: /notizia.html
-Disallow: /prodotto.html
-Disallow: /organo-sociale.html
 Disallow: /iscrizione.html
 Disallow: /check-iscrizione.html
+Disallow: /voucher.html
+Disallow: /check-voucher.html
 Crawl-delay: 1
-
 User-agent: Googlebot
 Allow: /
-
 User-agent: Googlebot-Image
 Allow: /
-
 User-agent: Googlebot-News
 Allow: /
-
 User-agent: Bingbot
 Allow: /
-
 Sitemap: https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/sitemap.xml
