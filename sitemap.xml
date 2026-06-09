@@ -3,65 +3,93 @@
 
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/notizie.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/eventi.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/prodotti.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/storia.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/organi-sociali.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/tesseramento.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/contatti.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/privacy.html</loc>
-    <lastmod>2025-01-01</lastmod>
+    <lastmod>2026-06-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
+  </url>
+
+  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/notizia.html?id=</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/evento.html?id=</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/prodotto.html?id=</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/organo-sociale.html?id=</loc>
+    <lastmod>2026-06-01</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
   </url>
 
 </urlset>
