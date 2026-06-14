@@ -36,7 +36,7 @@ jobs:
             { table: "notizie", url: "notizia.html?id=" },
             { table: "eventi", url: "evento.html?id=" },
             { table: "prodotti", url: "prodotto.html?id=" },
-            { table: "organi_sociali", url: "organo-sociale.html?id=" }
+            { table: "organi-sociali", url: "organo-sociale.html?id=" }
           ];
 
           async function main() {
