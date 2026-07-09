@@ -36,7 +36,8 @@ jobs:
             { table: "notizie", url: "notizia.html?id=" },
             { table: "eventi", url: "evento.html?id=" },
             { table: "prodotti", url: "prodotto.html?id=" },
-            { table: "organi-sociali", url: "organo-sociale.html?id=" }
+            { table: "organi-sociali", url: "organo-sociale.html?id=" },
+            { table: "gadgets", url: "gadget.html?id=" }
           ];
 
           async function main() {
@@ -51,7 +52,8 @@ jobs:
               "storia.html",
               "organi-sociali.html",
               "tesseramento.html",
-              "contatti.html"
+              "contatti.html",
+              "gadgets.html"
             ];
 
             staticPages.forEach(page => {
