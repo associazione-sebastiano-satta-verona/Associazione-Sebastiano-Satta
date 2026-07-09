@@ -25,6 +25,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadgets.html</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/storia.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -44,12 +50,6 @@
   </url>
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/contatti.html</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadgets.html</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -475,6 +475,36 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=cc1cd41d-15d3-4872-b6ed-35c2ece0ef45</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=9bf71de7-944a-4f56-8a3a-a3ff351d25c8</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=6d1b3a18-2f38-427b-954d-bc3ac5ca4dbc</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=cb914e78-79d1-486b-9be8-c7b068c0a372</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=e28aed56-b8d4-4062-aa48-6cd42cdf664f</loc>
+    <lastmod>2026-07-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/organo-sociale.html?id=65bef145-3c73-4bbf-9150-4f3f89d251eb</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
@@ -542,36 +572,6 @@
   </url>
   <url>
     <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/organo-sociale.html?id=9780435b-ad13-4f24-a3be-431c601641ef</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=cc1cd41d-15d3-4872-b6ed-35c2ece0ef45</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=9bf71de7-944a-4f56-8a3a-a3ff351d25c8</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=6d1b3a18-2f38-427b-954d-bc3ac5ca4dbc</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=cb914e78-79d1-486b-9be8-c7b068c0a372</loc>
-    <lastmod>2026-07-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://associazione-sebastiano-satta-verona.github.io/Associazione-Sebastiano-Satta/gadget.html?id=e28aed56-b8d4-4062-aa48-6cd42cdf664f</loc>
     <lastmod>2026-07-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
