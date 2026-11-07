@@ -30,7 +30,7 @@ jobs:
           import fs from "fs";
 
           const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
-          const sb-publishable-key = "sb_publishable_J1zDj0KMYJLQKmtmChSXLw_Fm9Y5QSA";
+          const sb_publishable_key = "sb_publishable_J1zDj0KMYJLQKmtmChSXLw_Fm9Y5QSA";
 
           const tables = [
             { table: "notizie", url: "notizia.html?id=" },
@@ -63,7 +63,7 @@ jobs:
             for (const t of tables) {
               try {
                 const res = await fetch(`${supabaseUrl}/rest/v1/${t.table}?select=id`, {
-                  headers: { apikey: sb-publishable-key}
+                  headers: { apikey: sb_publishable_key}
                 });
 
                 if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
