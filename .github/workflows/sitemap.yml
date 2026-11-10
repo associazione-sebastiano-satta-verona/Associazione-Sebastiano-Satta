@@ -7,6 +7,7 @@ on:
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  PUBLISHABLE_KEY: ${{ secrets.SITEMAP_PUBLISHABLE_KEY }}
 
 permissions:
   contents: write
@@ -30,7 +31,7 @@ jobs:
           import fs from "fs";
 
           const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
-          const sb_publishable_key = "sb_publishable_J1zDj0KMYJLQKmtmChSXLw_Fm9Y5QSA";
+          const sb_publishable_key = process.env.PUBLISHABLE_KEY;
 
           const tables = [
             { table: "notizie", url: "notizia.html?id=" },
