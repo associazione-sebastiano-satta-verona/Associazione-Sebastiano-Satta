@@ -6,7 +6,8 @@ on:
   workflow_dispatch:
 
 env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: TRUE
+  SUPABASE_URL: ${{ secrets.SITEMAP_SUPABASE_URL }}
   PUBLISHABLE_KEY: ${{ secrets.SITEMAP_PUBLISHABLE_KEY }}
 
 permissions:
@@ -30,7 +31,7 @@ jobs:
           cat > generate-sitemap.mjs << 'EOF'
           import fs from "fs";
 
-          const supabaseUrl = "https://jfdqkbdqyrdqsxoippgy.supabase.co";
+          const supabaseUrl = process.env.SUPABASE_URL;
           const sb_publishable_key = process.env.PUBLISHABLE_KEY;
 
           const tables = [
